@@ -1,0 +1,12 @@
+{
+  "bankId": 1,
+  "firstName": "Петр",
+  "secondName": "Иванович",
+  "surname": "Сидоров",
+  "birthday": "1999-12-10",
+  "passportNumber": "AB33333333",
+  "birthPlace": "Киев",
+  "email": "PetrS@mail.ru",
+  "registrationAddress": "string",
+  "residentialAddress": "string"
+}

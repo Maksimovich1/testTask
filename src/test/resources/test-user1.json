@@ -1,0 +1,13 @@
+{
+  "bankId": 1,
+  "firstName": "Андрей",
+  "secondName": "Иванович",
+  "surname": "Иванов",
+  "birthday": "1950-10-10",
+  "passportNumber": "AB1111111",
+  "birthPlace": "Минск",
+  "phone": "+375292223111",
+  "email": "andreyS@mail.ru",
+  "registrationAddress": "string",
+  "residentialAddress": "string"
+}

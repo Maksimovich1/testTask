@@ -1,0 +1,13 @@
+{
+  "bankId": 1,
+  "firstName": "Федор",
+  "secondName": "Иванович",
+  "surname": "Петров",
+  "birthday": "1950-10-10",
+  "passportNumber": "AB2222222",
+  "birthPlace": "Москва",
+  "phone": "+3752922233333",
+  "email": "FedorS@mail.ru",
+  "registrationAddress": "string",
+  "residentialAddress": "string"
+}
