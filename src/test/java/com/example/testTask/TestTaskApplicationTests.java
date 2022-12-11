@@ -28,6 +28,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 class TestTaskApplicationTests {
+    private final static String urlTemplate = "/v1/app/client";
 
     @Autowired
     MockMvc mockMvc;
@@ -43,31 +44,40 @@ class TestTaskApplicationTests {
                 .andExpect(status().is4xxClientError());
         // подготовим данные
 
-        mockMvc.perform(post("/v1/app/client")
+        mockMvc.perform(post(urlTemplate)
                         .contentType(MediaType.APPLICATION_JSON)
                         .header("x-Source", "mail")
                         .content(readFile("/test-user1.json")))
                 .andExpect(status().isCreated());
-        mockMvc.perform(post("/v1/app/client")
+        mockMvc.perform(post(urlTemplate)
                         .contentType(MediaType.APPLICATION_JSON)
                         .header("x-Source", "bank")
                         .content(readFile("/test-user2.json")))
                 .andExpect(status().isCreated());
-        mockMvc.perform(post("/v1/app/client")
+        mockMvc.perform(post(urlTemplate)
                         .contentType(MediaType.APPLICATION_JSON)
                         .header("x-Source", "mobile")
                         .content(readFile("/test-user3.json")))
                 .andExpect(status().isCreated());
+        mockMvc.perform(post(urlTemplate)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .header("x-Source", "mail")
+                        .content(readFile("/test-user5.json")))
+                .andExpect(status().isCreated());
         // не пройдет валидацию
-        mockMvc.perform(post("/v1/app/client")
+        mockMvc.perform(post(urlTemplate)
                         .contentType(MediaType.APPLICATION_JSON)
                         .header("x-Source", "gosuslugi")
                         .content(readFile("/test-user4.json")))
                 .andExpect(status().is4xxClientError());
-
+        mockMvc.perform(post(urlTemplate)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .header("x-Source", "gosuslugi")
+                        .content(readFile("/test-user6.json")))
+                .andExpect(status().is4xxClientError());
         List<Client> clientList = clientJpaRepository.findAll();
 
-        Assertions.assertEquals(3, clientList.size());
+        Assertions.assertEquals(4, clientList.size());
 
         Client client = clientList.get(0);
         mockMvc.perform(get("/v1/app/client/" + client.getId())
@@ -75,14 +85,14 @@ class TestTaskApplicationTests {
                 .andExpect(status().isOk())
                 .andExpect(content().json(readFile("/test-user1.json")));
 
-        mockMvc.perform(get("/v1/app/client")
+        mockMvc.perform(get(urlTemplate)
                         .contentType(MediaType.APPLICATION_JSON)
                         .param("name", client.getFirstName())
                         .param("phone", client.getPhone()))
                 .andExpect(status().isOk())
                 .andExpect(content().json(readFile("/expectedAnswerListOfUser.json")));
 
-        mockMvc.perform(get("/v1/app/client")
+        mockMvc.perform(get(urlTemplate)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isBadRequest());
     }

@@ -1,12 +1,12 @@
 {
   "bankId": 1,
-  "firstName": "Петр",
+  "firstName": ":Женя",
   "secondName": "Иванович",
   "surname": "Сидоров",
-  "birthday": "1999-12-10",
-  "passportNumber": "AB33333333",
-  "birthPlace": "Киев",
-  "email": "PetrS@mail.ru",
+  "birthday": "1987-11-10",
+  "passportNumber": "AE1231231",
+  "birthPlace": "Варшава",
+  "email": "JanS@mail.ru",
   "registrationAddress": "string",
   "residentialAddress": "string"
 }

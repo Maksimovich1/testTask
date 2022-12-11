@@ -8,6 +8,7 @@ import lombok.ToString;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Past;
+import javax.validation.constraints.Pattern;
 import java.time.LocalDate;
 
 @Entity
@@ -39,12 +40,14 @@ public class Client {
     private LocalDate birthday;
 
     @Column(name = "passport_number")
+    @Pattern(regexp = "[A-Z]{2}\\d{7}", message = "Check pls passportNumber")
     private String passportNumber;
 
     @Column(name = "birth_place")
     private String birthPlace;
 
     @Column(name = "phone")
+    @Pattern(regexp = "[+]\\d{12}", message = "Check phone pls")
     private String phone;
 
     @Column(name = "email")
