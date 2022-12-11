@@ -1,5 +1,6 @@
 package com.example.testTask.validator;
 
+import com.example.testTask.domain.HeaderSourceType;
 import com.example.testTask.exception.ValidationException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -18,11 +19,11 @@ public class HeaderSourceValidationFactory implements ValidationFactory {
 
     private final List<HeaderSourceValidator> validators;
 
-    private Map<String, HeaderSourceValidator> uipResponseHandlerMap;
+    private Map<HeaderSourceType, HeaderSourceValidator> validatorMap;
 
     @PostConstruct
     public void init() {
-        uipResponseHandlerMap = validators.stream()
+        validatorMap = validators.stream()
                 .collect(Collectors.toMap(HeaderSourceValidator::getType, Function.identity()));
     }
 
@@ -31,7 +32,7 @@ public class HeaderSourceValidationFactory implements ValidationFactory {
         if (!StringUtils.hasText(source)) {
             throw new IllegalArgumentException("Type of source cannot be empty!");
         }
-        return Optional.ofNullable(uipResponseHandlerMap.get(source))
+        return Optional.ofNullable(validatorMap.get(HeaderSourceType.getBySourceName(source)))
                 .orElseThrow(() -> new ValidationException("This type of source (header) doesn't support!"));
     }
 }

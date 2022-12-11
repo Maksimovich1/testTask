@@ -23,7 +23,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     protected ResponseEntity<ErrorDto> handleGenericException(Exception e, WebRequest request) {
         log.error("Error processing " + request, e);
         ErrorDto errorDto = ErrorDto.builder()
-                .message("Ошибка на сервере")
+                .message("Internal server error")
                 .build();
         return new ResponseEntity<>(errorDto, HttpStatus.INTERNAL_SERVER_ERROR);
     }

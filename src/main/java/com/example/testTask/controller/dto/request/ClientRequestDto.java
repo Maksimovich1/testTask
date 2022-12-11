@@ -2,8 +2,6 @@ package com.example.testTask.controller.dto.request;
 
 import lombok.Data;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.Past;
 import java.time.LocalDate;
 
 @Data

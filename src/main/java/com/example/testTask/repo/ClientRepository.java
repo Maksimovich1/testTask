@@ -3,7 +3,6 @@ package com.example.testTask.repo;
 import com.example.testTask.domain.Client;
 
 import java.util.List;
-import java.util.Map;
 
 public interface ClientRepository {
 

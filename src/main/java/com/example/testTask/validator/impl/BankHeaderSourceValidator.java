@@ -1,10 +1,13 @@
 package com.example.testTask.validator.impl;
 
 import com.example.testTask.domain.Client;
+import com.example.testTask.domain.HeaderSourceType;
 import com.example.testTask.exception.ValidationException;
 import com.example.testTask.validator.HeaderSourceValidator;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
+
+import static com.example.testTask.domain.HeaderSourceType.BANK;
 
 @Component
 public class BankHeaderSourceValidator implements HeaderSourceValidator {
@@ -21,7 +24,7 @@ public class BankHeaderSourceValidator implements HeaderSourceValidator {
     }
 
     @Override
-    public String getType() {
-        return "bank";
+    public HeaderSourceType getType() {
+        return BANK;
     }
 }

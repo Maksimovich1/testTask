@@ -16,6 +16,7 @@ public class ClientMapper {
     public Client mapToEntity(ClientRequestDto source) {
         return modelMapper.map(source, Client.class);
     }
+
     public ClientResponseDto mapToDto(Client source) {
         return modelMapper.map(source, ClientResponseDto.class);
     }

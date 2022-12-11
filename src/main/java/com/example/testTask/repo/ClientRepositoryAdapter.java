@@ -7,9 +7,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.EntityManager;
 import java.util.List;
-import java.util.Map;
 
 @Slf4j
 @Repository
@@ -17,7 +15,6 @@ import java.util.Map;
 public class ClientRepositoryAdapter implements ClientRepository {
 
     private final ClientJpaRepository clientJpaRepository;
-    private final EntityManager entityManager;
 
     @Override
     public Client save(@NonNull Client client) {

@@ -1,10 +1,13 @@
 package com.example.testTask.validator.impl;
 
 import com.example.testTask.domain.Client;
+import com.example.testTask.domain.HeaderSourceType;
 import com.example.testTask.exception.ValidationException;
 import com.example.testTask.validator.HeaderSourceValidator;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
+
+import static com.example.testTask.domain.HeaderSourceType.GOSUSLUGI;
 
 @Component
 public class GosuslugiHeaderSourceValidator implements HeaderSourceValidator {
@@ -23,9 +26,9 @@ public class GosuslugiHeaderSourceValidator implements HeaderSourceValidator {
             throw new ValidationException("FirstName, SecondName, Surname, BirthPlace, RegistrationAddress, Phone, PassportNumber, BankId, Birthday are mandatory!");
         }
     }
-    
+
     @Override
-    public String getType() {
-        return "gosuslugi";
+    public HeaderSourceType getType() {
+        return GOSUSLUGI;
     }
 }
